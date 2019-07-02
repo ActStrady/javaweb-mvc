@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录</title>
     <%--${pageContext.request.contextPath}代表项目路径--%>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugin/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 </head>
 <body>
 <div class="container">
@@ -23,17 +24,17 @@
                 <div class="form-group form-group-lg">
                     <label for="username"></label>
                     <input type="text" class="form-control inp" placeholder="用户名" id="username" name="username"
-                           value="${cookie.username.value}"/>
+                           value="${cookie.username.value}">
                 </div>
                 <div class="form-group form-group-lg">
                     <label for="password"></label>
                     <input type="password" class="form-control inp" placeholder="密码" id="password" name="password"
-                           value="${cookie.password.value}"/>
+                           value="${cookie.password.value}">
                 </div>
                 <div class="input-group input-group-lg">
                     <label for="ver_code"></label>
                     <input type="text" class="form-control inp" id="ver_code" name="ver_code"
-                           placeholder="验证码"/>
+                           placeholder="验证码">
                     <span class="input-group-btn">
                         <img src="${pageContext.request.contextPath}/VerifyCodeServlet"
                              class="img" id="img" alt="loading"/>
@@ -54,9 +55,9 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/plugin/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/plugin/layer/layer.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
+<script src="${pageContext.request.contextPath}/plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/plugin/layer/layer.js"></script>
 <script>
     $("#sub").click(function (event) {
         // 用户名校验
