@@ -1,5 +1,8 @@
 package com.act.servlet;
 
+import com.act.pojo.User;
+import com.act.service.UserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -21,7 +24,6 @@ public class LoginServlet extends HttpServlet {
         String verCode = request.getParameter("ver_code");
         String remember = request.getParameter("remember");
 
-
         // cookie 记住我
         if (REMEMBER.equals(remember)) {
             rememberMe(request, response, username, password);
@@ -30,11 +32,20 @@ public class LoginServlet extends HttpServlet {
         // 验证码校验
         String text = (String)request.getSession().getAttribute("text");
         if (!text.equalsIgnoreCase(verCode)){
-            request.setAttribute("error", "验证码输入错误");
+            request.setAttribute("error", "验证码输入错误！");
             request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
             return;
         }
-        request.getSession().setAttribute("user", username);
+
+        // 账号校验
+        UserService userService = new UserService();
+        User user = userService.queryByUsernameAndPassword(username, password);
+        if (user == null){
+            request.setAttribute("error", "用户名或密码输入错误！");
+            request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
+            return;
+        }
+        request.getSession().setAttribute("user", user);
         request.getRequestDispatcher("jsp/main.jsp").forward(request, response);
     }
 
